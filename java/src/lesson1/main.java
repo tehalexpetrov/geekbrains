@@ -25,12 +25,12 @@ public class main {
 
     }
 
-    private static boolean twoNumbersCheck(int result) {
-        return (result >=10 && result <=20);
-    }
-
     private static int twoNumbers(int a , int b) {
         return a + b;
 
     }
+
+    private static boolean twoNumbersCheck(int result) {
+        return (result >=10 && result <=20);
     }
+}
