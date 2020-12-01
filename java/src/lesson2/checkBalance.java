@@ -34,7 +34,9 @@ public class checkBalance {
                 rightSum += arrayToSum[j];
             }
 
-            if (leftSum == rightSum) return true;
+            if (leftSum == rightSum) {
+                return true;
+            }
         }
         return false;
     }
