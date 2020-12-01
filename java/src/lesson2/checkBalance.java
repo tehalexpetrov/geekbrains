@@ -3,8 +3,7 @@ package lesson2;
 public class checkBalance {
     public static void main(String[] args) {
         System.out.println("****************Задание6***************");
-    /*Мы получили массив из чисел произвольно*/
-//        arrayNumberCheck(); //получили числа для массива
+
         int [] arrayToSum = new int[6];
 
         arrayToSum[0] = 1;
