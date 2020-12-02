@@ -6,7 +6,7 @@ public class arrayRevers {
     public static void main(String[] args) {
        /*Если n = 0. То никаких изменений в массиве не происходит*/
 
-        int n = 0;
+        int n = 1;
 
         int[] arrayRevers = new int[5];
 
