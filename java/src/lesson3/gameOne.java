@@ -5,19 +5,20 @@ import java.util.Scanner;
 public class gameOne {
 
     static Scanner in = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+
 
         while (true) {
-        System.out.println("Программа загадала число от 1 до 10");
-        System.out.println("Попробуйте угадать число. У Вас 3 попытки");
+            System.out.println("Программа загадала число от 1 до 10");
+            System.out.println("Попробуйте угадать число. У Вас 3 попытки");
 
-        int multiple = (int) Math.ceil(Math.random() * 10);
-        System.out.println(multiple);
+            int multiple = (int) Math.ceil(Math.random() * 9);
+            System.out.println(multiple);
 
-        System.out.println("Введите число от 1 до 10: ");
+            System.out.println("Введите число от 1 до 10: ");
 
 
         int maxCount = 3;
@@ -26,21 +27,25 @@ public class gameOne {
         for (int i = 0; i < maxCount; i++) {
             count++;
             int userAnswer = scanner.nextInt();
+
             if (userAnswer == multiple) {
                 System.out.println("Поздравляю! Вы угадали число.");
                 break;
 
+            } else if (count >= maxCount) {
+
+                System.out.println("К сожалению, Вы проиграли. Правильный ответ: " + multiple + "\n");
+
             } else if (userAnswer < multiple) {
+
                 System.out.println("Число меньше ответа");
 
             } else if (userAnswer > multiple) {
+
                 System.out.println("Число больше ответа");
             }
-            System.out.println("У Вас осталось " + (maxCount - count) + " попыток");
-        }
 
-        if (count >= maxCount) {
-            System.out.println("К сожалению, Вы проиграли. Правильный ответ: " + multiple + "\n");
+            System.out.println("У Вас осталось " + (maxCount - count) + " попыток");
         }
 
             System.out.println("Хотите сыграть еще раз?. Нажмите 1 - да или 0 - нет");
@@ -56,6 +61,7 @@ public class gameOne {
 
         }
     }
+
 
     private static void doExit() {
         System.exit(0);
