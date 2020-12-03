@@ -12,56 +12,62 @@ public class gameOne {
 
 
         while (true) {
-            System.out.println("Программа загадала число от 0 до 9");
+            System.out.println("Программа загадала число от 1 до 10");
             System.out.println("Попробуйте угадать число. У Вас 3 попытки");
 
-            int num1 = 0;
-            int num2 = 9;
-
-            int multiple = num1 + (int) Math.round(Math.random() * num2);
+            int multiple = (int) Math.round(Math.random() * 9);
             System.out.println(multiple);
 
-            System.out.println("Введите число от 0 до 9: ");
+            System.out.println("Введите число от 1 до 10: ");
 
 
-        int maxCount = 3;
-        int count = 0;
+            int maxCount = 3;
+            int count = 0;
 
-        for (int i = 0; i < maxCount; i++) {
-            count++;
+            for (int i = 0; i < maxCount; i++) {
+                count++;
+                int userAnswer = scanner.nextInt();
 
-            int userAnswer = scanner.nextInt();
+                if (userAnswer == multiple) {
+                    System.out.println("Поздравляю! Вы угадали число.");
+                    break;
 
-            if (userAnswer == multiple) {
-                System.out.println("Поздравляю! Вы угадали число.");
-                break;
-            } else if (count >= maxCount) {
-                System.out.println("К сожалению, Вы проиграли. Правильный ответ: " + multiple + "\n");
-            } else if (userAnswer < multiple) {
-                System.out.println("Число меньше ответа");
-            } else if (userAnswer > multiple) {
-                System.out.println("Число больше ответа");
+                } else if (count >= maxCount) {
+
+                    System.out.println("К сожалению, Вы проиграли. Правильный ответ: " + multiple + "\n");
+
+                } else if (userAnswer < multiple) {
+
+                    System.out.println("Число меньше ответа");
+
+                } else if (userAnswer > multiple) {
+
+                    System.out.println("Число больше ответа");
+                }
+
+                System.out.println("У Вас осталось " + (maxCount - count) + " попыток");
             }
-            System.out.println("У Вас осталось " + (maxCount - count) + " попыток");
-        }
+
             System.out.println("Хотите сыграть еще раз?. Нажмите 1 - да или 0 - нет");
 
             switch (in.nextInt()){
                 case 1 :
-                    break;
+                    continue;
                 case  0 :
                     doExit();
                 default:
-                    System.out.println("ведите 1 или 0");
-           }
+                    System.out.println("Попробуйте еще раз");
+            }
 
         }
     }
+
 
     private static void doExit() {
         System.exit(0);
     }
 }
+
 
 
 
