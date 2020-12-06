@@ -68,8 +68,8 @@ public class gameOne {
                 continue;
             } else {
                 System.out.println("Вы ввели не число");
+                continue;
             }
-            inputUserAnswer = value;
         } while (inputUserAnswer == NUM2 +1);
         return inputUserAnswer;
     }
