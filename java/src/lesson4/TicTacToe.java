@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
 
-    static final int SIZE = 5;
+    static final int SIZE = 3;
     static final char DOT_POINT = '•';
     static final char DOT_HUMAN = 'X';
     static final char DOT_AI = '0';
@@ -21,6 +21,7 @@ public class TicTacToe {
     static final String AI = "Компьютер";
 
     public static void main(String[] args) {
+
         turnGame(); //метод запуска игры
     }
 
@@ -47,13 +48,13 @@ public class TicTacToe {
     }
 
     private static void printMapNumbers(int i) {
+
         System.out.print(i + 1 + EMPTY);
     }
 
     private static void printMap() {
         printHeaderMap();
         printBodyMap();
-        System.out.println("\n");
     }
 
     private static void printBodyMap() {
@@ -68,11 +69,12 @@ public class TicTacToe {
 
     private static void playGame() {
         while(true) {
+
             humanTurn();
             printMap();
 //        проверка на окончание игры после человека
 
-            aiTurn();
+//            aiTurn();
             printMap();
 //         проверка на окончание игры после человек
         }
@@ -93,7 +95,7 @@ public class TicTacToe {
                 rowNumber = in.nextInt() - 1;
             } else {
                 in.next();
-                System.out.print("Введите число");
+                System.out.print("\nВведите число");
                 continue;
 
             }
@@ -103,35 +105,36 @@ public class TicTacToe {
                 columNumber = in.nextInt() - 1;
             } else {
                 in.next();
-                System.out.println("Введите число");
+                System.out.println("\nВведите число");
                 continue;
             }
 
             map[rowNumber][columNumber] = DOT_HUMAN;
-        } while (!isHumanValid(rowNumber, columNumber));
+
+        } while(!isHumanValidTurn(rowNumber, columNumber));
     }
 
-    private static boolean isHumanValid(int rowNumber, int columNumber) {
-        return isNumberValid(rowNumber, columNumber) && isCeillOcupancy(rowNumber, columNumber, false);  //Занятость ячеек
+    private static boolean isHumanValidTurn(int rowNumber, int columNumber) {
+        return isNumberValid(rowNumber, columNumber) && isCeillOcupancy(rowNumber, columNumber);
     }
 
     private static boolean isNumberValid(int rowNumber, int columNumber) {
-        if (rowNumber >= SIZE || rowNumber < 0 || columNumber >= SIZE || columNumber < 0 ){
-            System.out.println("Проверьте значение строки и столбца");
+        if (rowNumber > SIZE || rowNumber < 0 || columNumber > SIZE || columNumber < 0 ){
+            System.out.println("\nПроверьте значение строки и столбца");
             return false;
         }
-        return true;
+        return  true;
     }
 
-    private static boolean isCeillOcupancy(int rowNumber, int columNumber, boolean isAi) {
+    private static boolean isCeillOcupancy(int rowNumber, int columNumber) {
         if(map[rowNumber][columNumber] != DOT_POINT){
-            System.out.println("\nВы выбрали занятую ячейку\n");
-            return true;
-        }
+        System.out.println("\nВы выбрали занятую ячейку\n");
+        return true;
+    }
         return false;
     }
 
-    private static void aiTurn() {
+   /*private static void aiTurn() {
         int columNumber;
         int rowNumber;
 
@@ -139,8 +142,8 @@ public class TicTacToe {
             rowNumber = random.nextInt(SIZE);
             columNumber = random.nextInt(SIZE);
 
-        } while (!isCeillOcupancy(rowNumber, columNumber, true));
+        } while (!isHumanValidTurn(rowNumber, columNumber, true));
 
         map[rowNumber][columNumber] = DOT_AI;
-    }
+    }*/
 }
