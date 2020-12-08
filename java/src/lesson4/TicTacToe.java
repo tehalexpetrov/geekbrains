@@ -125,7 +125,9 @@ public class TicTacToe {
 
     private static boolean isCeillOcupancy(int rowNumber, int columNumber, boolean isAi) {
         if(map[rowNumber][columNumber] != DOT_POINT){
-            System.out.println("\nВы выбрали занятую ячейку\n");
+            if(!isAi) {
+                System.out.println("\nВы выбрали занятую ячейку\n");
+            }
             return false;
         }
         return true;
@@ -135,6 +137,7 @@ public class TicTacToe {
         int columNumber;
         int rowNumber;
 
+        System.out.println("Ход " + AI);
         do {
             rowNumber = random.nextInt(SIZE);
             columNumber = random.nextInt(SIZE);
