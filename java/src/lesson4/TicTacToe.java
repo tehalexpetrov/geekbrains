@@ -67,14 +67,14 @@ public class TicTacToe {
     }
 
     private static void playGame() {
-        while(true) {
+        while (true) {
             humanTurn();
             printMap();
-//        проверка на окончание игры после человека
+            checkEnd(DOT_HUMAN);
 
             aiTurn();
             printMap();
-//         проверка на окончание игры после человек
+            checkEnd(DOT_AI);
         }
     }
 
@@ -116,7 +116,7 @@ public class TicTacToe {
     }
 
     private static boolean isNumberValid(int rowNumber, int columNumber) {
-        if (rowNumber >= SIZE || rowNumber < 0 || columNumber >= SIZE || columNumber < 0 ){
+        if (rowNumber >= SIZE || rowNumber < 0 || columNumber >= SIZE || columNumber < 0) {
             System.out.println("Проверьте значение строки и столбца\n");
             return false;
         }
@@ -124,20 +124,56 @@ public class TicTacToe {
     }
 
     private static boolean isCeillOcupancy(int rowNumber, int columNumber, boolean isAi) {
-        if(map[rowNumber][columNumber] != DOT_POINT){
-            if(!isAi) {
-                System.out.println("\nВы выбрали занятую ячейку\n");
+        if (map[rowNumber][columNumber] != DOT_POINT) {
+            if (!isAi) {
+                System.out.println("\nВы выбрали занятую ячейку");
             }
             return false;
         }
         return true;
     }
 
+    private static void checkEnd(char symbol) {
+
+        boolean isEnd = false;
+
+        checkWin(symbol);
+        if(checkWin(symbol)){
+            isEnd = true;
+            String winMessage;
+
+            if(symbol == DOT_HUMAN){
+                winMessage = "Ура! Победитель: " + USER ;
+            } else {
+                winMessage = "Победитель: " + AI;
+            }
+            System.out.println(winMessage);
+        }
+
+        //ничья
+        if (isEnd){
+            System.exit(0);
+        }
+    }
+
+    private static boolean checkWin(char symbol) {
+        if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol) return true;
+        if(map[1][0] == symbol && map[1][1] == symbol && map[1][2] == symbol) return true;
+        if (map[2][0] == symbol && map[2][1] == symbol && map[2][2] == symbol) return true;
+        if (map[0][0] == symbol && map[1][0] == symbol && map[2][0] == symbol) return true;
+        if (map[0][1] == symbol && map[1][1] == symbol && map[2][1] == symbol) return true;
+        if (map[0][2] == symbol && map[1][2] == symbol && map[2][2] == symbol) return true;
+        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol) return true;
+        if (map[2][0] == symbol && map[1][1] == symbol && map[0][2] == symbol) return true;
+        return false;
+
+    }
+
     private static void aiTurn() {
         int columNumber;
         int rowNumber;
 
-        System.out.println("Ход " + AI);
+        System.out.println("Ходит " + AI + "\n");
         do {
             rowNumber = random.nextInt(SIZE);
             columNumber = random.nextInt(SIZE);
