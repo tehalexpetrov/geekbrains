@@ -13,6 +13,7 @@ public class TicTacToe {
     static final char[][] map = new char[SIZE][SIZE];
     static final Scanner in = new Scanner(System.in);
     static final Random random = new Random();
+    static int turnCount; //Проверка на ньчью.
 
     static final char HEARD_FIRST_SYMBOL = '♥';
     static final String EMPTY = " ";
