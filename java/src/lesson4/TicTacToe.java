@@ -150,7 +150,11 @@ public class TicTacToe {
             System.out.println(winMessage);
         }
 
-        //ничья
+        if (!isEnd && isMapFull()){
+            System.out.println("Ничья");
+            isEnd = true;
+        }
+
         if (isEnd){
             System.exit(0);
         }
@@ -168,6 +172,18 @@ public class TicTacToe {
         return false;
 
     }
+
+    private static boolean isMapFull() {
+        for (char[] chars : map) {
+            for (char symbol : chars) {
+                if (symbol == DOT_POINT) {
+                    return false;
+                }
+            }
+        }
+        return  true;
+    }
+
 
     private static void aiTurn() {
         int columNumber;
