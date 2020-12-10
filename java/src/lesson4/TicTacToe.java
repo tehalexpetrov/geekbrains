@@ -1,5 +1,7 @@
 package lesson4;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public class TicTacToe {
     static final char[][] map = new char[SIZE][SIZE];
     static final Scanner in = new Scanner(System.in);
     static final Random random = new Random();
-    static int turnCount; //Проверка на ньчью.
+    static int turnCount;
 
     static final char HEARD_FIRST_SYMBOL = '♥';
     static final String EMPTY = " ";
@@ -29,6 +31,7 @@ public class TicTacToe {
         initMap();
         printMap();
         playGame();
+        repeatGame();
     }
 
     private static void initMap() {
@@ -135,7 +138,6 @@ public class TicTacToe {
     }
 
     private static void checkEnd(char symbol) {
-
         boolean isEnd = false;
 
         checkWin(symbol);
@@ -151,39 +153,51 @@ public class TicTacToe {
             System.out.println(winMessage);
         }
 
-        if (!isEnd && isMapFull()){
+
+        if (isMapFull()){
             System.out.println("Ничья");
             isEnd = true;
         }
 
         if (isEnd){
-            System.exit(0);
+            repeatGame();
         }
     }
 
     private static boolean checkWin(char symbol) {
-        if (map[0][0] == symbol && map[0][1] == symbol && map[0][2] == symbol) return true;
-        if(map[1][0] == symbol && map[1][1] == symbol && map[1][2] == symbol) return true;
-        if (map[2][0] == symbol && map[2][1] == symbol && map[2][2] == symbol) return true;
-        if (map[0][0] == symbol && map[1][0] == symbol && map[2][0] == symbol) return true;
-        if (map[0][1] == symbol && map[1][1] == symbol && map[2][1] == symbol) return true;
-        if (map[0][2] == symbol && map[1][2] == symbol && map[2][2] == symbol) return true;
-        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol) return true;
-        if (map[2][0] == symbol && map[1][1] == symbol && map[0][2] == symbol) return true;
-        return false;
-
-    }
-
-    private static boolean isMapFull() {
-        for (char[] chars : map) {
-            for (char symbol : chars) {
-                if (symbol == DOT_POINT) {
-                    return false;
+        for (int i = 0; i < SIZE; i++) {
+            if (map[i][0] == symbol && map[i][1] == symbol && map[i][2] == symbol && map[i][3] == symbol && map[i][4] == symbol) {
+                return true;
+            }
+            for (int j = 0; j < SIZE; j++) {
+                if (map[0][j] == symbol && map[1][j] == symbol && map[2][j] == symbol && map[i][3] == symbol && map[i][4] == symbol) {
+                    return true;
                 }
             }
         }
-        return  true;
+
+        if (map[0][0] == symbol && map[1][1] == symbol && map[2][2] == symbol && map[3][3] == symbol && map[4][4] == symbol) {
+            return true;
+        }
+        if (map[0][2] == symbol && map[1][1] == symbol && map[2][0] == symbol && map[0][3] == symbol && map[2][2] == symbol && map[3][0] == symbol) {
+            return true;
+        }
+
+        return false;
     }
+
+
+
+    private static boolean isMapFull() {
+            for (int i = 0; i < SIZE; i++) {
+                for (int j = 0; j < SIZE; j++) {
+                    if (map[i][j] == DOT_POINT) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
 
     private static void aiTurn() {
@@ -198,5 +212,16 @@ public class TicTacToe {
         } while (!isCeillOcupancy(rowNumber, columNumber, true));
 
         map[rowNumber][columNumber] = DOT_AI;
+    }
+
+    private static void repeatGame() {
+        System.out.println("Хотите сыграть еще раз?. Введите 1 или 0");
+
+        switch (in.nextInt()){
+            case 1:
+                turnGame();
+            case 0:
+                System.exit(0);
+        }
     }
 }
