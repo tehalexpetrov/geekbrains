@@ -1,6 +1,6 @@
 package lesson5;
 
-public class Staff {
+public class Staff<staffAArray> {
         private String name;
         private String position;
         private String email;
@@ -15,8 +15,14 @@ public class Staff {
         this.email = email;
         this.phone = phone;
         this.salary = salary;
+    }
 
-        System.out.println("Должностьть сотрудников: " + position + "\t---- " + salary);
+    public int getAge(){
+        return age;
+    }
+
+    public void printStaffArray(){
+        System.out.println(this);
     }
 
     @Override
