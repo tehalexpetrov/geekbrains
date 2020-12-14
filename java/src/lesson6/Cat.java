@@ -9,4 +9,11 @@ public class Cat extends Animal {
     public void printCatArray(){
         System.out.println(this);
     }
+
+    @Override
+    public String toString() {
+        return "Cat(" +
+                "run=" + run +
+                ')';
+    }
 }
