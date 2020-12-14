@@ -6,4 +6,7 @@ public class Cat extends Animal {
         super(run, swim, jump);
     }
 
+    public void printCatArray(){
+        System.out.println(this);
+    }
 }

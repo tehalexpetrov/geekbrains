@@ -1,7 +1,5 @@
 package lesson6;
 
-import java.util.Scanner;
-
 public abstract class Animal {
 
     protected final String SWIM_CAT = null;
@@ -17,6 +15,10 @@ public abstract class Animal {
         this.run = run;
         this.swim = swim;
         this.jump = jump;
+    }
+
+    public int catRun() {
+        return run;
     }
 
     @Override

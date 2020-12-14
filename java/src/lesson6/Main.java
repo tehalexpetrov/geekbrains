@@ -1,32 +1,23 @@
 package lesson6;
 
 import static lesson6.Runner.RUN_CAT;
-import static lesson6.Runner.in;
 
 
 public class Main {
+
     public static void main(String[] args) {
 
-        Cat cat1 = new Cat(120,0,2);
-        Cat cat2 = new Cat(220, 0, 1);
-        Cat cat3 = new Cat(100, 0, 2);
+        Cat cat1 = new Cat(400, 0, 200);
+        Cat cat2 = new Cat(500, 0, 200);
+        Cat cat3 = new Cat(600, 0, 200);
 
-        Animal [] animalArray = {cat1, cat2, cat3};
+        Animal[] catArray = {cat1, cat2, cat3};
 
-        for (Animal animal : animalArray) {
-
-        }
-
-        }
-
-        public static boolean checkRunAnimal(){
-            int runAnimal;
-            System.out.println("Введите расстояние, которая пробежела кошка от 0 до 200м");
-            runAnimal = in.nextInt();
-            if(runAnimal > RUN_CAT){
-                return false;
+        for (Animal animal : catArray) {
+           if (animal.catRun() > RUN_CAT) {
+            System.out.println(catArray + " --> Масимальная длина " + (RUN_CAT));
             }
-            return true;
         }
+    }
 }
 
