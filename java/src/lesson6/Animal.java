@@ -14,11 +14,19 @@ public abstract class Animal {
         this.jump = jump;
     }
 
-    public int catRun() {
+    public int runAnimal() {
         return run;
     }
 
-    public String printCat(){
+    public int getSwim(){
+        return swim;
+    }
+
+    public int getJump(){
+        return jump;
+    }
+
+    public String printAnimal(){
         return name;
     }
 
