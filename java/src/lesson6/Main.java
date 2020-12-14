@@ -15,7 +15,7 @@ public class Main {
 
         for (Animal animal : catArray) {
            if (animal.catRun() > RUN_CAT) {
-            System.out.println(catArray + " --> Масимальная длина " + (RUN_CAT));
+            System.out.println(catArray[0] + " --> Масимальная длина " + (RUN_CAT));
             }
         }
     }
