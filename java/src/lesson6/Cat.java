@@ -1,19 +1,24 @@
 package lesson6;
 
-public class Cat extends Animal {
+public class Cat extends Animal implements Runner {
 
-    public Cat(int run, int swim, int jump) {
-        super(run, swim, jump);
+    public Cat(String name, int run, int swim, int jump) {
+        super(name, run, swim, jump);
     }
 
     public void printCatArray(){
-        System.out.println(this);
+        System.out.println(this.name);
     }
 
     @Override
     public String toString() {
-        return "Cat(" +
+        return "Cat(" + name +
                 "run=" + run +
                 ')';
+    }
+
+    @Override
+    public void run() {
+
     }
 }
