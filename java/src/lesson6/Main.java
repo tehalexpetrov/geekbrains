@@ -7,26 +7,21 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Cat cat1 = new Cat("Мартин", 150, 0, 1);
-        Cat cat2 = new Cat("Снежок", 500, 5, 5);
-        Cat cat3 = new Cat("Барсик", 100, 2, 2);
+        Cat cat1 = new Cat("Мартин", 150, 0, 1, 200, 0,2);
+        Cat cat2 = new Cat("Снежок", 500, 5, 5, 400, 0,2);
+        Cat cat3 = new Cat("Барсик", 100, 2, 2, 600, 0,2);
 
-        Dog dog1 = new Dog("Шарик", 800, 11, 1);
-        Dog dog2 = new Dog("Бобик", 100, 5, 2);
-        Dog dog3 = new Dog("Тузик", 499, 10, 9);
+        Dog dog1 = new Dog("Шарик", 800, 11, 1, 500, 10,10);
+        Dog dog2 = new Dog("Бобик", 100, 5, 2, 800, 10,8);
+        Dog dog3 = new Dog("Тузик", 499, 10, 9, 1000, 10,5);
 
         Animal[] catArray = {cat1, cat2, cat3};
 
         /* Перебираем массив и получаем результат бега котов */
+        System.out.println("\n*********** Забег котов **************\n");
 
         for (Animal animal : catArray) {
-            if (animal.getRun() > RUN_CAT) {
-                System.out.print(animal.printAnimal() + " пробежал " + animal.getRun() + " метров " + " --> Масимальная длина " + (RUN_CAT) + " метров " + " --> ");
-                System.out.println(false);
-            } else {
-                System.out.print(animal.printAnimal() + " пробежал " + animal.getRun() + " метров " + " -->  ");
-                System.out.println(true);
-            }
+            animalRun(animal, " пробежал ");
         }
 
         System.out.println("\n***********Заплыв котов**************\n");
@@ -34,13 +29,7 @@ public class Main {
         /* Получаем результат заплыва котов */
 
         for (Animal animal : catArray) {
-            if (animal.getSwim() > SWIM_CAT) {
-                System.out.print(animal.printAnimal() + " проплыл " + animal.getSwim() + " метров " + " Супер кот -->  ");
-                System.out.println(true);
-            } else {
-                System.out.print(animal.printAnimal() + " проплыл " + animal.getSwim() + " метров " + " Конечно. Котики не любят воду " + " --> ");
-                System.out.println(false);
-            }
+            animalSwim(animal, " проплыл ");
         }
 
         /* Проверим как прыгают котики */
@@ -48,13 +37,7 @@ public class Main {
         System.out.println("\n*********** Прыжки котов **************\n");
 
         for (Animal animal : catArray) {
-            if (animal.getJump() > JUMP_CAT) {
-                System.out.print(animal.printAnimal() + " прыгнул на " + animal.getJump() + " метра(ов) " + " Сверх кот -->  ");
-                System.out.println(false);
-            } else {
-                System.out.print(animal.printAnimal() + " прыгнул на " + animal.getJump() + " метра(ов) " + " Супер кот -->  ");
-                System.out.println(true);
-            }
+            animalJump(animal, " прыгнул ");
         }
         /* Массив собачек */
 
@@ -65,29 +48,29 @@ public class Main {
         System.out.println("\n*********** Бег собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalRunDog(animal, " пробежал ");
+            animalRun(animal, " пробежал ");
         }
 
         /* Заплыв собак */
         System.out.println("\n*********** Заплыв собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalSwimDog(animal, " проплыл ");
+            animalSwim(animal, " проплыл ");
         }
 
         System.out.println("\n*********** Прыжки собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalJumpDog(animal, " прыгнул ");
+            animalJump(animal, " прыгнул ");
         }
 
     }
 
-    private static void animalRunDog(Animal animal, String s) {
-        if (animal.getRun() > RUN_DOG) {
+    private static void animalRun(Animal animal, String s) {
+        if (animal.getRun() > animal.getStop_run()) {
             System.out.print(animal.printAnimal() + s + animal.getRun() + " метров " + "Это очень много " + " --> ");
             System.out.println(false);
-        } else if (animal.getRun() < RUN_DOG - 200) {
+        } else if (animal.getRun() < animal.getStop_run()) {
             System.out.print(animal.printAnimal() + " пробежал " + animal.getRun() + " метров " + " Можно лучше --> ");
             System.out.println(true);
         } else {
@@ -96,11 +79,11 @@ public class Main {
         }
     }
 
-    private static void animalSwimDog(Animal animal, String s) {
-        if (animal.getSwim() > SWIM_DOG) {
+    private static void animalSwim(Animal animal, String s) {
+        if (animal.getSwim() > animal.getStop_swim()) {
             System.out.print(animal.printAnimal() + s + animal.getSwim() + " метров " + "Это очень много " + " --> ");
             System.out.println(false);
-        } else if (animal.getSwim() < SWIM_DOG - 4) {
+        } else if (animal.getSwim() < animal.getStop_swim()) {
             System.out.print(animal.printAnimal() + " проплыл " + animal.getSwim() + " метров " + " Можно лучше --> ");
             System.out.println(true);
         } else {
@@ -108,11 +91,11 @@ public class Main {
             System.out.println(true);
         }
     }
-    private static void animalJumpDog(Animal animal, String s) {
-        if (animal.getJump() > JUMP_DOG) {
+    private static void animalJump(Animal animal, String s) {
+        if (animal.getJump() > animal.getStop_jump()) {
             System.out.print(animal.printAnimal() + s + animal.getJump() + " метров " + "Это очень много " + " --> ");
             System.out.println(false);
-        } else if (animal.getJump() < JUMP_DOG) {
+        } else if (animal.getJump() < animal.getStop_jump()) {
             System.out.print(animal.printAnimal() + " прыгнул " + animal.getJump() + " метров " + " Можно лучше --> ");
             System.out.println(true);
         } else {
