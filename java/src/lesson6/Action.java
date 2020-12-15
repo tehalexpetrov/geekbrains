@@ -1,6 +1,6 @@
 package lesson6;
 
-public interface Runner {
+public interface Action {
     int RUN_CAT = 200;
     int RUN_DOG = 500;
     int SWIM_CAT = 0; //коте не может плыть

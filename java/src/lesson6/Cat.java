@@ -1,6 +1,6 @@
 package lesson6;
 
-public class Cat extends Animal implements Runner {
+public class Cat extends Animal implements Action {
 
     public Cat(String name, int run, int swim, int jump) {
         super(name, run, swim, jump);

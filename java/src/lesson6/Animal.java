@@ -14,7 +14,7 @@ public abstract class Animal {
         this.jump = jump;
     }
 
-    public int runAnimal() {
+    public int getRun() {
         return run;
     }
 
