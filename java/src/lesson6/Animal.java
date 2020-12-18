@@ -6,9 +6,9 @@ public abstract class Animal {
     protected int run;
     protected int swim;
     protected int jump;
-    protected int stop_run;
-    protected int stop_swim;
-    protected int stop_jump;
+    protected int stop_run; //ограничение на бег
+    protected int stop_swim; //ограничение на заплыв
+    protected int stop_jump; //ограничение на прыжки
 
     public Animal(String name, int run, int swim, int jump, int stop_run, int stop_swim, int stop_jump) {
         this.name = name;
