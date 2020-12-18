@@ -21,7 +21,7 @@ public class Main {
         System.out.println("\n*********** Забег котов **************\n");
 
         for (Animal animal : catArray) {
-            animalRun(animal, " пробежал ");
+            Animal.animalRun(animal, " пробежал ");
         }
 
         System.out.println("\n***********Заплыв котов**************\n");
@@ -29,7 +29,7 @@ public class Main {
         /* Получаем результат заплыва котов */
 
         for (Animal animal : catArray) {
-            animalSwim(animal, " проплыл ");
+            Animal.animalSwim(animal, " проплыл ");
         }
 
         /* Проверим как прыгают котики */
@@ -37,7 +37,7 @@ public class Main {
         System.out.println("\n*********** Прыжки котов **************\n");
 
         for (Animal animal : catArray) {
-            animalJump(animal, " прыгнул ");
+            Animal.animalJump(animal, " прыгнул ");
         }
         /* Массив собачек */
 
@@ -48,51 +48,22 @@ public class Main {
         System.out.println("\n*********** Бег собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalRun(animal, " пробежал ");
+            Animal.animalRun(animal, " пробежал ");
         }
 
         /* Заплыв собак */
         System.out.println("\n*********** Заплыв собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalSwim(animal, " проплыл ");
+            Animal.animalSwim(animal, " проплыл ");
         }
 
         System.out.println("\n*********** Прыжки собак **************\n");
 
         for (Animal animal : dogArray) {
-            animalJump(animal, " прыгнул ");
+            Animal.animalJump(animal, " прыгнул ");
         }
 
-    }
-
-    private static void animalRun(Animal animal, String s) {
-        if (animal.getRun() > animal.getStop_run()) {
-            System.out.print(animal.printAnimal() + s + animal.getRun() + " метров " + "Это очень много " + " --> ");
-            System.out.println(false);
-        } else {
-            System.out.print(animal.printAnimal() + " пробежал " + animal.getRun() + " метров " + " Молодец --> ");
-            System.out.println(true);
-        }
-    }
-
-    private static void animalSwim(Animal animal, String s) {
-        if (animal.getSwim() > animal.getStop_swim()) {
-            System.out.print(animal.printAnimal() + s + animal.getSwim() + " метров " + "Это очень много " + " --> ");
-            System.out.println(false);
-        } else {
-            System.out.print(animal.printAnimal() + " проплыл " + animal.getSwim() + " метров " + " Молодец --> ");
-            System.out.println(true);
-        }
-    }
-    private static void animalJump(Animal animal, String s) {
-        if (animal.getJump() > animal.getStop_jump()) {
-            System.out.print(animal.printAnimal() + s + animal.getJump() + " метров " + "Это очень много " + " --> ");
-            System.out.println(false);
-        } else {
-            System.out.print(animal.printAnimal() + " прыгнул " + animal.getJump() + " метров " + " Молодец --> ");
-            System.out.println(true);
-        }
     }
 }
 
