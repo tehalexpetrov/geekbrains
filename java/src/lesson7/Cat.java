@@ -5,13 +5,22 @@ import java.util.Random;
 public class Cat {
 
     private String name;
-    private Random random = new Random();
+    private int appetite;
+    private boolean hungry;
 
-    public Cat(String name) {
+    Cat(String name, int appetite) {
         this.name = name;
+        this.appetite = appetite;
+        this.hungry = true;
     }
 
-    public void eat(Plate plate) {
-        plate.decreaseFood(random.nextInt(4) + 3);
+    void info() {
+        String isHungry = !hungry ? "сыт" : "голоден";
+        System.out.println(name + ": " + isHungry);
+    }
+
+    void eat(Plate plate) {
+        if (hungry && plate.decreaseFood(appetite))
+            hungry = false;
     }
 }

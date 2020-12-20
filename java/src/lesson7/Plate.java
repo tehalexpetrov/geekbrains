@@ -1,23 +1,26 @@
 package lesson7;
 
-public class Plate {
+class Plate {
 
-    private int food;
+    public int food;
+    public Plate(int food) {
+        this.food = food;
+    }
 
-    public void addFood(int food) {
+
+    boolean decreaseFood(int n) {
+        int eatDiff = food - n;
+        if (eatDiff < 0) {
+            return false;
+        }
+        food -= n;
+        return true;
+    }
+    void addFood(int food) {
         this.food += food;
     }
 
-    public void printInfo() {
-        System.out.println(this);
-    }
-
-    @Override
-    public String toString() {
-        return "Plate: food = " + food;
-    }
-
-    public void decreaseFood(int food) {
-        this.food -= food;
+    void info() {
+        System.out.println("plate: " + food);
     }
 }

@@ -3,13 +3,12 @@ package lesson7;
 public class Test {
     public static void main(String[] args) {
 
-    Cat cat = new Cat("Мартин");
-    Plate plate = new Plate();
+        Cat[] cats = {new Cat("Мартин", 50), new Cat("Барсик", 50), new Cat("Снежок", 25), new Cat("Борис Николаевич", 5), new Cat("Коте", 1)};
+        Plate plate = new Plate( 80);
 
-
-    plate.addFood(10);
-    cat.eat(plate);
-    plate.printInfo();
-
+        for (Cat cat : cats) {
+            cat.eat(plate);
+            cat.info();
+        }
     }
 }
